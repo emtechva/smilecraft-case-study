@@ -1,649 +1,1031 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmileCraft Dental Clinic | GHL Automation Case Study</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --bg-soft: #111111;
-    --card: #191919;
-    --card-2: #151515;
-    --border: #2b2b2b;
-    --gold: #e8b800;
-    --gold-soft: rgba(232, 184, 0, 0.12);
-    --teal: #28c2bd;
-    --text: #ededed;
-    --muted: #8f8f8f;
-    --white: #ffffff;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  <title>SmileCraft Dental Clinic | GHL Automation Case Study</title>
 
-  html {
-    scroll-behavior: smooth;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  body {
-    overflow-x: hidden;
-    color: var(--text);
-    background: var(--bg);
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-  }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
-  img {
-    display: block;
-    width: 100%;
-  }
+  <style>
+    /* ======================================================
+       BUILT WITH EMERLYN BRAND THEME
+       ====================================================== */
 
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 32px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(14px);
-  }
+    :root {
+      --bg: #0A0A0F;
+      --bg-soft: #10091A;
 
-  .nav-brand {
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
+      --card: #150C22;
+      --card-light: #1C0F2E;
 
-  .nav-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
+      --pink: #FF2DBB;
+      --purple: #8A5CFF;
+      --violet: #6A1BFF;
 
-  .nav-links a {
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-  }
+      --pink-soft: rgba(255, 45, 187, 0.12);
+      --purple-soft: rgba(138, 92, 255, 0.14);
 
-  .nav-links a:hover {
-    color: var(--gold);
-  }
+      --border: rgba(138, 92, 255, 0.24);
 
-  .hero {
-    position: relative;
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 24px 76px;
-    overflow: hidden;
-    text-align: center;
-  }
+      --white: #FAFAFE;
+      --text: #EEEAF7;
+      --muted: #AFA6C2;
 
-  .hero::before {
-    position: absolute;
-    top: -280px;
-    left: 50%;
-    width: 900px;
-    height: 900px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(232, 184, 0, 0.12) 0%, rgba(232, 184, 0, 0.04) 32%, transparent 68%);
-    content: "";
-    pointer-events: none;
-  }
+      --gradient: linear-gradient(
+        90deg,
+        #FF2DBB 0%,
+        #8A5CFF 55%,
+        #6A1BFF 100%
+      );
 
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    width: min(960px, 100%);
-  }
-
-  .hero-label,
-  .slabel {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--gold);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-  }
-
-  .hero-label {
-    margin-bottom: 28px;
-    padding: 7px 16px;
-    border: 1px solid var(--gold-soft);
-    border-radius: 999px;
-    background: rgba(232, 184, 0, 0.05);
-  }
-
-  h1,
-  h2,
-  h3 {
-    color: var(--white);
-    letter-spacing: 0;
-    line-height: 1.1;
-  }
-
-  h1 {
-    max-width: 920px;
-    margin: 0 auto 22px;
-    font-size: clamp(40px, 7vw, 82px);
-    font-weight: 800;
-  }
-
-  h1 span {
-    color: var(--gold);
-  }
-
-  .hero-sub {
-    max-width: 660px;
-    margin: 0 auto 42px;
-    color: var(--muted);
-    font-size: 16px;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .tag {
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--muted);
-    background: var(--card);
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  .tag.hl {
-    color: var(--gold);
-    border-color: var(--gold-soft);
-    background: var(--gold-soft);
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 64px;
-    margin: 48px auto 0;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-  }
-
-  .section {
-    width: min(1120px, 100%);
-    margin: 0 auto;
-    padding: 86px 24px;
-  }
-
-  .divider {
-    width: min(1120px, calc(100% - 48px));
-    height: 1px;
-    margin: 0 auto;
-    border: 0;
-    background: var(--border);
-  }
-
-  .slabel {
-    margin-bottom: 14px;
-  }
-
-  .slabel::after {
-    display: block;
-    width: 58px;
-    height: 1px;
-    background: var(--border);
-    content: "";
-  }
-
-  .stitle {
-    max-width: 760px;
-    margin-bottom: 16px;
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 750;
-  }
-
-  .sdesc {
-    max-width: 660px;
-    margin-bottom: 42px;
-    color: var(--muted);
-  }
-
-  .abox {
-    margin: 32px 0;
-    padding: 26px 30px;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 12px 12px 0;
-    color: var(--text);
-    background: var(--card);
-  }
-
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    margin: 34px 0 48px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--border);
-    overflow: hidden;
-  }
-
-  .info-card {
-    min-height: 104px;
-    padding: 22px;
-    background: var(--card);
-  }
-
-  .info-label {
-    margin-bottom: 7px;
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .info-value {
-    color: var(--white);
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .flow {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0;
-    margin-top: 20px;
-  }
-
-  .flow-node {
-    min-width: 118px;
-    padding: 13px 15px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--card);
-    text-align: center;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .flow-node:hover {
-    transform: translateY(-2px);
-    border-color: rgba(232, 184, 0, 0.45);
-  }
-
-  .flow-num {
-    margin-bottom: 3px;
-    color: var(--gold);
-    font-size: 10px;
-    font-weight: 800;
-  }
-
-  .flow-text {
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.35;
-  }
-
-  .flow-arrow {
-    padding: 0 7px;
-    color: var(--muted);
-    font-size: 16px;
-  }
-
-  .shot-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 38px;
-  }
-
-  .shot-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--card);
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .shot-card:hover,
-  .workflow-card:hover,
-  .lesson-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(232, 184, 0, 0.42);
-  }
-
-  .shot-card.large {
-    grid-column: 1 / -1;
-  }
-
-  .shot-card img {
-    height: 430px;
-    object-fit: cover;
-    object-position: top center;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .shot-card.large img {
-    height: 560px;
-  }
-
-  .shot-card.contain img {
-    object-fit: contain;
-    background: #f5f5f5;
-  }
-
-  .shot-cap {
-    padding: 16px 18px;
-  }
-
-  .shot-cap strong {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--white);
-    font-size: 14px;
-  }
-
-  .shot-cap span {
-    display: block;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .workflow-card {
-    margin-bottom: 26px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--card);
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .workflow-head {
-    display: flex;
-    gap: 13px;
-    align-items: center;
-    padding: 18px 24px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .workflow-icon {
-    display: flex;
-    width: 38px;
-    height: 38px;
-    flex: 0 0 38px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--gold-soft);
-    border-radius: 9px;
-    color: var(--gold);
-    background: var(--gold-soft);
-    font-size: 12px;
-    font-weight: 900;
-  }
-
-  .workflow-title {
-    color: var(--white);
-    font-size: 15px;
-    font-weight: 800;
-  }
-
-  .workflow-sub {
-    margin-top: 2px;
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .workflow-img {
-    background: #f5f5f5;
-  }
-
-  .workflow-img img {
-    max-height: 560px;
-    object-fit: contain;
-  }
-
-  .workflow-steps {
-    display: grid;
-    gap: 10px;
-    padding: 18px 24px 22px;
-  }
-
-  .workflow-step {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 11px 12px;
-    border-radius: 8px;
-    background: var(--bg-soft);
-  }
-
-  .step-num {
-    display: flex;
-    width: 23px;
-    height: 23px;
-    flex: 0 0 23px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    color: var(--gold);
-    background: var(--gold-soft);
-    font-size: 10px;
-    font-weight: 900;
-  }
-
-  .step-copy {
-    color: var(--text);
-    font-size: 13px;
-    line-height: 1.55;
-  }
-
-  .step-copy strong {
-    color: var(--white);
-    font-weight: 800;
-  }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: start;
-  }
-
-  .lesson-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 28px;
-  }
-
-  .lesson-card {
-    position: relative;
-    min-height: 174px;
-    padding: 24px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--card);
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .lesson-card::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold), var(--teal));
-    content: "";
-  }
-
-  .lesson-num {
-    margin-bottom: 12px;
-    color: var(--gold);
-    font-size: 28px;
-    font-weight: 850;
-    line-height: 1;
-  }
-
-  .lesson-title {
-    margin-bottom: 8px;
-    color: var(--white);
-    font-size: 14px;
-    font-weight: 800;
-  }
-
-  .lesson-desc {
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 30px;
-  }
-
-  .result {
-    min-height: 126px;
-    padding: 18px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--card);
-  }
-
-  .result span {
-    display: block;
-    margin-bottom: 12px;
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 900;
-  }
-
-  .result strong {
-    display: block;
-    color: var(--white);
-    font-size: 13px;
-    line-height: 1.35;
-  }
-
-  .footer {
-    padding: 38px 24px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    text-align: center;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 900px) {
-    .nav-links {
-      display: none;
+      --glow:
+        0 0 20px rgba(255, 45, 187, 0.14),
+        0 0 42px rgba(106, 27, 255, 0.08);
     }
 
-    .info-grid,
-    .shot-grid,
-    .two-col,
-    .lesson-grid,
-    .results-grid {
-      grid-template-columns: 1fr;
+    /* ======================================================
+       RESET
+       ====================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .shot-card.large {
-      grid-column: auto;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .flow {
-      align-items: stretch;
-      flex-direction: column;
-      gap: 8px;
+    body {
+      overflow-x: hidden;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 12% 8%,
+          rgba(255, 45, 187, 0.08),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 88% 14%,
+          rgba(106, 27, 255, 0.11),
+          transparent 34%
+        ),
+        var(--bg);
+
+      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
-    .flow-node {
+    img {
+      display: block;
       width: 100%;
     }
 
-    .flow-arrow {
-      display: none;
+    a {
+      color: inherit;
     }
-  }
 
-  @media (max-width: 640px) {
+    /* ======================================================
+       NAVIGATION
+       ====================================================== */
+
     .nav {
-      padding: 13px 18px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 14px 32px;
+
+      border-bottom: 1px solid var(--border);
+
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(16px);
     }
 
-    .section {
-      padding: 64px 18px;
+    .nav-brand {
+      background: var(--gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+      text-shadow: 0 0 16px rgba(255, 45, 187, 0.4);
+    }
+
+    /* ======================================================
+       HERO
+       ====================================================== */
 
     .hero {
-      padding: 104px 18px 60px;
+      position: relative;
+
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+
+      padding: 120px 24px 76px;
+
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      position: absolute;
+      top: -280px;
+      left: 50%;
+
+      width: 900px;
+      height: 900px;
+
+      transform: translateX(-50%);
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 42% 42%,
+          rgba(255, 45, 187, 0.18),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 60% 48%,
+          rgba(106, 27, 255, 0.18),
+          transparent 47%
+        );
+
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::after {
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(138, 92, 255, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(138, 92, 255, 0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 42px 42px;
+
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+
+      width: min(960px, 100%);
+    }
+
+    .hero-label,
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--pink);
+
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hero-label {
+      margin-bottom: 28px;
+      padding: 7px 16px;
+
+      border: 1px solid rgba(255, 45, 187, 0.24);
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 45, 187, 0.08),
+          rgba(138, 92, 255, 0.08)
+        );
+
+      box-shadow: 0 0 26px rgba(255, 45, 187, 0.08);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--white);
+      line-height: 1.1;
     }
 
     h1 {
-      font-size: clamp(36px, 12vw, 54px);
+      max-width: 950px;
+      margin: 0 auto 22px;
+
+      font-size: clamp(40px, 7vw, 82px);
+      font-weight: 800;
     }
 
-    .shot-card img,
-    .shot-card.large img,
-    .workflow-img img {
-      height: auto;
-      max-height: none;
+    .gradient-text {
+      background: var(--gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow: 0 0 32px rgba(255, 45, 187, 0.14);
     }
-  }
-</style>
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 0 auto 42px;
+
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 7px 14px;
+
+      border: 1px solid var(--border);
+      border-radius: 6px;
+
+      color: var(--muted);
+      background: rgba(21, 12, 34, 0.78);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .tag.highlight {
+      color: var(--white);
+
+      border-color: rgba(255, 45, 187, 0.28);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 45, 187, 0.13),
+          rgba(138, 92, 255, 0.13)
+        );
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 64px;
+
+      margin: 48px auto 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          var(--pink),
+          var(--purple),
+          transparent
+        );
+
+      box-shadow: 0 0 14px rgba(255, 45, 187, 0.35);
+    }
+
+    /* ======================================================
+       GENERAL SECTIONS
+       ====================================================== */
+
+    .section {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 86px 24px;
+    }
+
+    .divider {
+      width: min(1120px, calc(100% - 48px));
+      height: 1px;
+
+      margin: 0 auto;
+      border: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(138, 92, 255, 0.36),
+          transparent
+        );
+    }
+
+    .section-label {
+      margin-bottom: 14px;
+    }
+
+    .section-label::after {
+      display: block;
+
+      width: 58px;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--pink),
+          var(--purple)
+        );
+
+      content: "";
+    }
+
+    .section-title {
+      max-width: 780px;
+      margin-bottom: 16px;
+
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+    }
+
+    .section-description {
+      max-width: 680px;
+      margin-bottom: 42px;
+
+      color: var(--muted);
+    }
+
+    /* ======================================================
+       HIGHLIGHT BOX
+       ====================================================== */
+
+    .highlight-box {
+      position: relative;
+
+      margin: 32px 0;
+      padding: 26px 30px;
+
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--pink);
+      border-radius: 0 14px 14px 0;
+
+      color: var(--text);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 45, 187, 0.06),
+          rgba(138, 92, 255, 0.05)
+        ),
+        var(--card);
+
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+    }
+
+    .highlight-box strong {
+      color: var(--white);
+    }
+
+    /* ======================================================
+       PROJECT INFORMATION GRID
+       ====================================================== */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      gap: 1px;
+
+      margin: 34px 0 48px;
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      background: var(--border);
+      overflow: hidden;
+    }
+
+    .info-card {
+      min-height: 108px;
+      padding: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(28, 15, 46, 0.9),
+          rgba(21, 12, 34, 0.95)
+        );
+    }
+
+    .info-label {
+      margin-bottom: 7px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      color: var(--white);
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* ======================================================
+       PATIENT JOURNEY FLOW
+       ====================================================== */
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      gap: 0;
+      margin-top: 20px;
+    }
+
+    .flow-node {
+      min-width: 118px;
+      padding: 14px 15px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(28, 15, 46, 0.92),
+          rgba(21, 12, 34, 0.95)
+        );
+
+      text-align: center;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .flow-node:hover {
+      transform: translateY(-3px);
+
+      border-color: rgba(255, 45, 187, 0.5);
+
+      box-shadow:
+        0 0 22px rgba(255, 45, 187, 0.13);
+    }
+
+    .flow-number {
+      margin-bottom: 4px;
+
+      color: var(--pink);
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .flow-text {
+      color: var(--white);
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .flow-arrow {
+      padding: 0 7px;
+
+      color: var(--purple);
+      font-size: 17px;
+    }
+
+    /* ======================================================
+       SCREENSHOT CARDS
+       ====================================================== */
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 24px;
+      margin-top: 38px;
+    }
+
+    .screenshot-card,
+    .workflow-card,
+    .lesson-card,
+    .result-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(28, 15, 46, 0.92),
+          rgba(21, 12, 34, 0.96)
+        );
+
+      overflow: hidden;
+
+      box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.22);
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .screenshot-card:hover,
+    .workflow-card:hover,
+    .lesson-card:hover,
+    .result-card:hover {
+      transform: translateY(-3px);
+
+      border-color: rgba(255, 45, 187, 0.46);
+
+      box-shadow: var(--glow);
+    }
+
+    .screenshot-card.large {
+      grid-column: 1 / -1;
+    }
+
+    .screenshot-card img {
+      height: 430px;
+
+      object-fit: cover;
+      object-position: top center;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-card.large img {
+      height: 560px;
+    }
+
+    .screenshot-card.contain img {
+      object-fit: contain;
+      background: var(--white);
+    }
+
+    .screenshot-caption {
+      padding: 17px 19px;
+    }
+
+    .screenshot-caption strong {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: var(--white);
+      font-size: 14px;
+    }
+
+    .screenshot-caption span {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ======================================================
+       WORKFLOW CARDS
+       ====================================================== */
+
+    .workflow-card {
+      margin-bottom: 26px;
+    }
+
+    .workflow-header {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+
+      padding: 18px 24px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .workflow-icon {
+      display: flex;
+
+      width: 40px;
+      height: 40px;
+
+      flex: 0 0 40px;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255, 45, 187, 0.26);
+      border-radius: 10px;
+
+      color: var(--white);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 45, 187, 0.18),
+          rgba(138, 92, 255, 0.18)
+        );
+
+      font-size: 12px;
+      font-weight: 900;
+
+      box-shadow: 0 0 18px rgba(255, 45, 187, 0.08);
+    }
+
+    .workflow-title {
+      color: var(--white);
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .workflow-subtitle {
+      margin-top: 2px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .workflow-image {
+      background: var(--white);
+    }
+
+    .workflow-image img {
+      max-height: 560px;
+      object-fit: contain;
+    }
+
+    .workflow-steps {
+      display: grid;
+      gap: 10px;
+
+      padding: 18px 24px 22px;
+    }
+
+    .workflow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      padding: 12px;
+
+      border: 1px solid rgba(138, 92, 255, 0.08);
+      border-radius: 9px;
+
+      background: var(--bg-soft);
+    }
+
+    .step-number {
+      display: flex;
+
+      width: 24px;
+      height: 24px;
+
+      flex: 0 0 24px;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--pink);
+      border-radius: 50%;
+
+      color: var(--pink);
+      background: var(--pink-soft);
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .step-copy {
+      color: var(--text);
+
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .step-copy strong {
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    /* ======================================================
+       CRM SECTION
+       ====================================================== */
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ======================================================
+       CLIENT VALUE
+       ====================================================== */
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .result-card {
+      min-height: 128px;
+      padding: 19px;
+    }
+
+    .result-card span {
+      display: block;
+
+      margin-bottom: 12px;
+
+      color: var(--pink);
+
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .result-card strong {
+      display: block;
+
+      color: var(--white);
+
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .lesson-card {
+      position: relative;
+
+      min-height: 178px;
+      padding: 24px;
+    }
+
+    .lesson-card::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 2px;
+
+      background: var(--gradient);
+
+      content: "";
+    }
+
+    .lesson-number {
+      margin-bottom: 12px;
+
+      color: var(--pink);
+
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .lesson-title {
+      margin-bottom: 8px;
+
+      color: var(--white);
+
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .lesson-description {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ======================================================
+       FOOTER
+       ====================================================== */
+
+    .footer {
+      padding: 38px 24px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      text-align: center;
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer span {
+      background: var(--gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ======================================================
+       SCROLL ANIMATION
+       ====================================================== */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ======================================================
+       RESPONSIVE
+       ====================================================== */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .info-grid,
+      .screenshot-grid,
+      .two-column,
+      .lesson-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .screenshot-card.large {
+        grid-column: auto;
+      }
+
+      .flow {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .flow-node {
+        width: 100%;
+      }
+
+      .flow-arrow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding: 13px 18px;
+      }
+
+      .section {
+        padding: 64px 18px;
+      }
+
+      .hero {
+        padding: 104px 18px 60px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 12vw, 54px);
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .screenshot-card img,
+      .screenshot-card.large img,
+      .workflow-image img {
+        height: auto;
+        max-height: none;
+      }
+
+      .workflow-header {
+        align-items: flex-start;
+        padding: 17px;
+      }
+
+      .workflow-steps {
+        padding: 16px;
+      }
+
+      .highlight-box {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- ======================================================
+       NAVIGATION
+       ====================================================== -->
+
   <nav class="nav">
-    <div class="nav-brand">SmileCraft - GHL Portfolio</div>
+    <div class="nav-brand">
+      SmileCraft · GHL Case Study
+    </div>
+
     <ul class="nav-links">
       <li><a href="#overview">Overview</a></li>
       <li><a href="#funnel">Funnel</a></li>
@@ -653,267 +1035,806 @@
     </ul>
   </nav>
 
+  <!-- ======================================================
+       HERO
+       ====================================================== -->
+
   <header class="hero">
     <div class="hero-inner">
-      <div class="hero-label">GoHighLevel Case Study - Practice Project</div>
-      <h1>SmileCraft <span>Dental Clinic</span><br>Funnel & CRM Automation</h1>
-      <p class="hero-sub">A dental booking funnel connected with CRM workflows for reminders, appointment status tracking, rescheduling, and patient follow-up.</p>
+
+      <div class="hero-label">
+        GoHighLevel Case Study · Practice Project
+      </div>
+
+      <h1>
+        SmileCraft
+        <span class="gradient-text">Dental Clinic</span>
+        <br>
+        Funnel &amp; CRM Automation
+      </h1>
+
+      <p class="hero-subtitle">
+        A dental booking funnel connected with CRM workflows for
+        appointment confirmation, reminders, status tracking,
+        rescheduling, and patient follow-up.
+      </p>
+
       <div class="tags">
-        <span class="tag hl">GoHighLevel</span>
-        <span class="tag hl">Funnel Builder</span>
-        <span class="tag hl">Email and SMS</span>
+        <span class="tag highlight">GoHighLevel</span>
+        <span class="tag highlight">Funnel Builder</span>
+        <span class="tag highlight">Email &amp; SMS</span>
+
         <span class="tag">CRM Opportunities</span>
         <span class="tag">Appointment Reminders</span>
         <span class="tag">Workflow Automation</span>
       </div>
+
       <div class="scroll-line"></div>
+
     </div>
   </header>
 
   <main>
-    <section class="section" id="overview">
-      <div class="slabel">01 - Project Context</div>
-      <h2 class="stitle">What This Project Is About</h2>
-      <p class="sdesc">A full patient journey from landing page visit to post-appointment follow-up, built as a connected funnel and CRM automation system.</p>
 
-      <div class="abox fade-in">
-        SmileCraft Dental Clinic is a concept project created to show how a clinic can use GoHighLevel to capture bookings, send reminders, track appointment outcomes, and trigger the correct follow-up automatically.
+    <!-- ====================================================
+         PROJECT CONTEXT
+         ==================================================== -->
+
+    <section class="section" id="overview">
+
+      <div class="section-label">
+        01 · Project Context
+      </div>
+
+      <h2 class="section-title">
+        What This Project Is About
+      </h2>
+
+      <p class="section-description">
+        A complete patient journey from landing page visit to
+        post-appointment follow-up, built as one connected funnel
+        and CRM automation system.
+      </p>
+
+      <div class="highlight-box fade-in">
+        SmileCraft Dental Clinic is a practice portfolio project
+        created to demonstrate how a clinic can use GoHighLevel
+        to capture appointments, send reminders, track patient
+        outcomes, and automatically trigger the correct follow-up.
       </div>
 
       <div class="info-grid fade-in">
+
         <div class="info-card">
           <div class="info-label">Project Type</div>
-          <div class="info-value">Practice / Portfolio Project</div>
+          <div class="info-value">
+            Practice / Portfolio Project
+          </div>
         </div>
+
         <div class="info-card">
           <div class="info-label">Industry</div>
-          <div class="info-value">Dental / Healthcare</div>
+          <div class="info-value">
+            Dental / Healthcare
+          </div>
         </div>
+
         <div class="info-card">
           <div class="info-label">Primary Tool</div>
-          <div class="info-value">GoHighLevel</div>
+          <div class="info-value">
+            GoHighLevel
+          </div>
         </div>
+
         <div class="info-card">
           <div class="info-label">Scope</div>
-          <div class="info-value">Funnel + CRM + Automation</div>
+          <div class="info-value">
+            Funnel + CRM + Automation
+          </div>
         </div>
+
         <div class="info-card">
-          <div class="info-label">Goal</div>
-          <div class="info-value">Book and follow up with patients</div>
+          <div class="info-label">Main Goal</div>
+          <div class="info-value">
+            Book and follow up with patients
+          </div>
         </div>
+
         <div class="info-card">
-          <div class="info-label">Status</div>
-          <div class="info-value">Completed - Portfolio Ready</div>
+          <div class="info-label">Project Status</div>
+          <div class="info-value">
+            Completed · Portfolio Ready
+          </div>
         </div>
+
       </div>
 
-      <div class="slabel fade-in">Patient Journey Flow</div>
-      <div class="flow fade-in">
-        <div class="flow-node"><div class="flow-num">01</div><div class="flow-text">Landing Page</div></div>
-        <div class="flow-arrow">-&gt;</div>
-        <div class="flow-node"><div class="flow-num">02</div><div class="flow-text">Booking Page</div></div>
-        <div class="flow-arrow">-&gt;</div>
-        <div class="flow-node"><div class="flow-num">03</div><div class="flow-text">Thank You Page</div></div>
-        <div class="flow-arrow">-&gt;</div>
-        <div class="flow-node"><div class="flow-num">04</div><div class="flow-text">Reminder Emails</div></div>
-        <div class="flow-arrow">-&gt;</div>
-        <div class="flow-node"><div class="flow-num">05</div><div class="flow-text">Status SMS</div></div>
-        <div class="flow-arrow">-&gt;</div>
-        <div class="flow-node"><div class="flow-num">06</div><div class="flow-text">Follow-Up Path</div></div>
+      <div class="section-label fade-in">
+        Patient Journey Flow
       </div>
+
+      <div class="flow fade-in">
+
+        <div class="flow-node">
+          <div class="flow-number">01</div>
+          <div class="flow-text">Landing Page</div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-node">
+          <div class="flow-number">02</div>
+          <div class="flow-text">Booking Page</div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-node">
+          <div class="flow-number">03</div>
+          <div class="flow-text">Thank-You Page</div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-node">
+          <div class="flow-number">04</div>
+          <div class="flow-text">Reminder Emails</div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-node">
+          <div class="flow-number">05</div>
+          <div class="flow-text">Status SMS</div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-node">
+          <div class="flow-number">06</div>
+          <div class="flow-text">Follow-Up Path</div>
+        </div>
+
+      </div>
+
     </section>
 
     <hr class="divider">
+
+    <!-- ====================================================
+         FRONT-END FUNNEL
+         ==================================================== -->
 
     <section class="section" id="funnel">
-      <div class="slabel">02 - Front-End Funnel</div>
-      <h2 class="stitle">Funnel Pages Built for Booking</h2>
-      <p class="sdesc">Three clean pages guide visitors from interest to appointment request, then confirm the next steps.</p>
 
-      <div class="shot-grid fade-in">
-        <article class="shot-card large">
-         <img src="./Landing Page.png" alt="SmileCraft landing page screenshot">
-          <div class="shot-cap">
-            <strong>Landing Page</strong>
-            <span>Introduces the clinic, services, benefits, and booking call to action.</span>
-          </div>
-        </article>
-
-        <article class="shot-card contain">
-          <img src="./Booking Page.png" alt="SmileCraft booking page screenshot">
-          <div class="shot-cap">
-            <strong>Booking Page</strong>
-            <span>Calendar page where patients choose their preferred appointment date and time.</span>
-          </div>
-        </article>
-
-        <article class="shot-card contain">
-          <img src="./Thankyou Page.png" alt="SmileCraft thank-you page screenshot">
-          <div class="shot-cap">
-            <strong>Thank You Page</strong>
-            <span>Confirms the request and tells patients what happens next.</span>
-          </div>
-        </article>
+      <div class="section-label">
+        02 · Front-End Funnel
       </div>
+
+      <h2 class="section-title">
+        Funnel Pages Built for Booking
+      </h2>
+
+      <p class="section-description">
+        Three connected pages guide visitors from learning about
+        the clinic to selecting an appointment and receiving
+        confirmation of the next steps.
+      </p>
+
+      <div class="screenshot-grid fade-in">
+
+        <article class="screenshot-card large">
+
+          <img
+            src="./Landing Page.png"
+            alt="SmileCraft dental clinic landing page"
+          >
+
+          <div class="screenshot-caption">
+            <strong>Landing Page</strong>
+
+            <span>
+              Introduces the clinic, explains the available dental
+              services, builds trust, and directs visitors toward
+              the booking page.
+            </span>
+          </div>
+
+        </article>
+
+        <article class="screenshot-card contain">
+
+          <img
+            src="./Booking Page.png"
+            alt="SmileCraft appointment booking page"
+          >
+
+          <div class="screenshot-caption">
+            <strong>Booking Page</strong>
+
+            <span>
+              Allows patients to choose a preferred appointment
+              date and time through the GoHighLevel calendar.
+            </span>
+          </div>
+
+        </article>
+
+        <article class="screenshot-card contain">
+
+          <img
+            src="./Thankyou Page.png"
+            alt="SmileCraft appointment thank-you page"
+          >
+
+          <div class="screenshot-caption">
+            <strong>Thank-You Page</strong>
+
+            <span>
+              Confirms that the appointment request was received
+              and explains what the patient should expect next.
+            </span>
+          </div>
+
+        </article>
+
+      </div>
+
     </section>
 
     <hr class="divider">
+
+    <!-- ====================================================
+         AUTOMATION WORKFLOWS
+         ==================================================== -->
 
     <section class="section" id="workflows">
-      <div class="slabel">03 - Automation Workflows</div>
-      <h2 class="stitle">GHL Workflows Behind the System</h2>
-      <p class="sdesc">The backend workflows handle the operational work after a patient books an appointment.</p>
+
+      <div class="section-label">
+        03 · Automation Workflows
+      </div>
+
+      <h2 class="section-title">
+        GoHighLevel Workflows Behind the System
+      </h2>
+
+      <p class="section-description">
+        The backend workflows manage appointment communication,
+        CRM movement, patient status, rescheduling, and long-term
+        follow-up after a patient books.
+      </p>
+
+      <!-- WORKFLOW 01 -->
 
       <article class="workflow-card fade-in">
-        <div class="workflow-head">
-          <div class="workflow-icon">01</div>
-          <div>
-            <div class="workflow-title">Appointment Booked - Confirmation and Reminders</div>
-            <div class="workflow-sub">Booking confirmation, 1-day reminder, 4-hour reminder</div>
+
+        <div class="workflow-header">
+
+          <div class="workflow-icon">
+            01
           </div>
+
+          <div>
+            <div class="workflow-title">
+              Appointment Confirmation and Reminders
+            </div>
+
+            <div class="workflow-subtitle">
+              Booking confirmation · 1-day reminder · 4-hour reminder
+            </div>
+          </div>
+
         </div>
-        <div class="workflow-img">
-          <img src="./Appointment + Reminder.png" alt="Appointment confirmation and reminder workflow screenshot">
+
+        <div class="workflow-image">
+
+          <img
+            src="./Appointment + Reminder.png"
+            alt="GoHighLevel appointment confirmation and reminder workflow"
+          >
+
         </div>
+
         <div class="workflow-steps">
-          <div class="workflow-step"><div class="step-num">1</div><div class="step-copy"><strong>Booking trigger:</strong> patient is added to the appointment workflow.</div></div>
-          <div class="workflow-step"><div class="step-num">2</div><div class="step-copy"><strong>Confirmation email:</strong> patient receives appointment confirmation.</div></div>
-          <div class="workflow-step"><div class="step-num">3</div><div class="step-copy"><strong>Timed reminders:</strong> emails are sent 1 day and 4 hours before the visit.</div></div>
+
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+
+            <div class="step-copy">
+              <strong>Booking trigger:</strong>
+              The workflow begins when a patient books an appointment.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+
+            <div class="step-copy">
+              <strong>CRM update:</strong>
+              The patient is tagged and moved to the Appointment
+              Booked pipeline stage.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+
+            <div class="step-copy">
+              <strong>Confirmation email:</strong>
+              The patient receives an email containing their
+              appointment details.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">4</div>
+
+            <div class="step-copy">
+              <strong>Timed reminders:</strong>
+              Reminder emails are sent one day and four hours
+              before the scheduled visit.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">5</div>
+
+            <div class="step-copy">
+              <strong>Internal status check:</strong>
+              After the appointment, the clinic receives a message
+              requesting the final appointment outcome.
+            </div>
+          </div>
+
         </div>
+
       </article>
 
-      <article class="workflow-card fade-in">
-        <div class="workflow-head">
-          <div class="workflow-icon">02</div>
-          <div>
-            <div class="workflow-title">Appointment Status Trigger</div>
-            <div class="workflow-sub">Attended, cancelled, or no-show routing</div>
-          </div>
-        </div>
-        <div class="workflow-img">
-          <img src="./Appointment Status Trigger Linked.png" alt="Appointment status trigger workflow screenshot">
-        </div>
-        <div class="workflow-steps">
-          <div class="workflow-step"><div class="step-num">1</div><div class="step-copy">Clinic staff receives a status check with trigger links.</div></div>
-          <div class="workflow-step"><div class="step-num">2</div><div class="step-copy">Clicking a link marks the patient as attended, cancelled, or no-show.</div></div>
-          <div class="workflow-step"><div class="step-num">3</div><div class="step-copy">The correct follow-up or reschedule branch starts automatically.</div></div>
-        </div>
-      </article>
+      <!-- WORKFLOW 02 -->
 
       <article class="workflow-card fade-in">
-        <div class="workflow-head">
-          <div class="workflow-icon">03</div>
-          <div>
-            <div class="workflow-title">Cancellation, No-Show, and Reschedule Workflow</div>
-            <div class="workflow-sub">Status-based CRM movement and reschedule emails</div>
+
+        <div class="workflow-header">
+
+          <div class="workflow-icon">
+            02
           </div>
+
+          <div>
+            <div class="workflow-title">
+              Appointment Status Trigger
+            </div>
+
+            <div class="workflow-subtitle">
+              Attended · Cancelled · No-show routing
+            </div>
+          </div>
+
         </div>
-        <div class="workflow-img">
-          <img src="./Appointment cancelled + reschedule.png" alt="Cancelled and no-show reschedule workflow screenshot">
+
+        <div class="workflow-image">
+
+          <img
+            src="./Appointment Status Trigger Linked.png"
+            alt="GoHighLevel appointment status trigger workflow"
+          >
+
         </div>
+
         <div class="workflow-steps">
-          <div class="workflow-step"><div class="step-num">1</div><div class="step-copy"><strong>Cancelled path:</strong> contact is tagged and sent a reschedule email.</div></div>
-          <div class="workflow-step"><div class="step-num">2</div><div class="step-copy"><strong>No-show path:</strong> contact moves to missed appointment follow-up.</div></div>
-          <div class="workflow-step"><div class="step-num">3</div><div class="step-copy"><strong>Attended path:</strong> patient receives post-visit thank-you and feedback messaging.</div></div>
+
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+
+            <div class="step-copy">
+              Clinic staff receives an internal status-check message
+              containing three Trigger Link options.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+
+            <div class="step-copy">
+              Staff selects whether the patient
+              <strong>Attended, Cancelled, or did not show.</strong>
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+
+            <div class="step-copy">
+              The selected Trigger Link starts the appropriate
+              workflow and updates the patient journey automatically.
+            </div>
+          </div>
+
         </div>
+
       </article>
 
+      <!-- WORKFLOW 03 -->
+
       <article class="workflow-card fade-in">
-        <div class="workflow-head">
-          <div class="workflow-icon">04</div>
-          <div>
-            <div class="workflow-title">Nurture Email Workflow</div>
-            <div class="workflow-sub">Longer-term patient follow-up</div>
+
+        <div class="workflow-header">
+
+          <div class="workflow-icon">
+            03
           </div>
+
+          <div>
+            <div class="workflow-title">
+              Appointment Outcome and Rescheduling
+            </div>
+
+            <div class="workflow-subtitle">
+              Status-based CRM movement and recovery follow-up
+            </div>
+          </div>
+
         </div>
-        <div class="workflow-img">
-          <img src="./Nurture Workflow.png" alt="Nurture workflow screenshot">
+
+        <div class="workflow-image">
+
+          <img
+            src="./Appointment cancelled + reschedule.png"
+            alt="GoHighLevel cancelled and no-show rescheduling workflow"
+          >
+
         </div>
+
         <div class="workflow-steps">
-          <div class="workflow-step"><div class="step-num">1</div><div class="step-copy">Send the first nurture email.</div></div>
-          <div class="workflow-step"><div class="step-num">2</div><div class="step-copy">Wait 7 days, then send another follow-up.</div></div>
-          <div class="workflow-step"><div class="step-num">3</div><div class="step-copy">Wait 30 days, then send the next nurture email.</div></div>
+
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+
+            <div class="step-copy">
+              <strong>Attended path:</strong>
+              The patient is moved to the Attended stage and receives
+              a thank-you and feedback email.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+
+            <div class="step-copy">
+              <strong>Cancelled path:</strong>
+              The contact is tagged, moved to the Cancelled stage,
+              and sent a rescheduling email.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+
+            <div class="step-copy">
+              <strong>No-show path:</strong>
+              The patient is moved to the No-Show stage and receives
+              a recovery and rebooking email.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">4</div>
+
+            <div class="step-copy">
+              Patients who do not immediately rebook receive the
+              <strong>needs-reschedule</strong> tag and enter the
+              nurture workflow.
+            </div>
+          </div>
+
         </div>
+
       </article>
+
+      <!-- WORKFLOW 04 -->
+
+      <article class="workflow-card fade-in">
+
+        <div class="workflow-header">
+
+          <div class="workflow-icon">
+            04
+          </div>
+
+          <div>
+            <div class="workflow-title">
+              Patient Nurture Email Workflow
+            </div>
+
+            <div class="workflow-subtitle">
+              Longer-term patient follow-up
+            </div>
+          </div>
+
+        </div>
+
+        <div class="workflow-image">
+
+          <img
+            src="./Nurture Workflow.png"
+            alt="GoHighLevel patient nurture email workflow"
+          >
+
+        </div>
+
+        <div class="workflow-steps">
+
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+
+            <div class="step-copy">
+              Send the first nurture email with helpful dental-care
+              information and a booking link.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+
+            <div class="step-copy">
+              Wait seven days and send a gentle follow-up email.
+            </div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+
+            <div class="step-copy">
+              Wait another 30 days and send a final reminder to
+              reconnect with the patient.
+            </div>
+          </div>
+
+        </div>
+
+      </article>
+
     </section>
 
     <hr class="divider">
+
+    <!-- ====================================================
+         CRM OPERATIONS
+         ==================================================== -->
 
     <section class="section" id="crm">
-      <div class="slabel">04 - CRM Operations</div>
-      <h2 class="stitle">Appointment Status Becomes Easy to Track</h2>
-      <p class="sdesc">The opportunity board keeps patient status visible so the clinic can see who booked, who attended, and who needs rescheduling.</p>
 
-      <div class="two-col fade-in">
-        <article class="shot-card contain">
-          <img src="./Opportunities.png" alt="GoHighLevel opportunities pipeline screenshot">
-          <div class="shot-cap">
+      <div class="section-label">
+        04 · CRM Operations
+      </div>
+
+      <h2 class="section-title">
+        Appointment Status Becomes Easier to Track
+      </h2>
+
+      <p class="section-description">
+        The GoHighLevel opportunity pipeline keeps patient status
+        visible so the clinic can quickly identify who booked,
+        attended, cancelled, missed an appointment, or needs
+        follow-up.
+      </p>
+
+      <div class="two-column fade-in">
+
+        <article class="screenshot-card contain">
+
+          <img
+            src="./Opportunities.png"
+            alt="GoHighLevel SmileCraft opportunity pipeline"
+          >
+
+          <div class="screenshot-caption">
             <strong>CRM Opportunity Board</strong>
-            <span>Patients are organized into stages such as New Lead, Appointment Booked, Cancelled/No-Show, and Attended.</span>
+
+            <span>
+              Patients are organized into stages such as New Lead,
+              Appointment Booked, Cancelled, No-Show, Follow-Up
+              Needed, Attended, and Completed.
+            </span>
           </div>
+
         </article>
 
-        <div class="abox">
-          <strong>Workflow highlight:</strong><br>
-          After the appointment, the clinic receives a quick status check. One click can trigger the correct attended, cancelled, no-show, follow-up, or reschedule path. This removes guesswork and keeps the next action clear.
+        <div class="highlight-box">
+          <strong>Workflow highlight:</strong>
+          <br><br>
+
+          After an appointment, the clinic receives a quick status
+          check. One staff action can trigger the correct attended,
+          cancellation, no-show, follow-up, or rescheduling path.
+
+          <br><br>
+
+          This reduces manual CRM updates and keeps the next action
+          clear for every patient.
         </div>
+
       </div>
+
     </section>
 
     <hr class="divider">
 
+    <!-- ====================================================
+         CLIENT VALUE
+         ==================================================== -->
+
     <section class="section" id="value">
-      <div class="slabel">05 - Client Value</div>
-      <h2 class="stitle">Why This System Matters</h2>
-      <p class="sdesc">The value is not just the funnel. It is the follow-through after the patient books.</p>
+
+      <div class="section-label">
+        05 · Designed Business Value
+      </div>
+
+      <h2 class="section-title">
+        Why This Automation System Matters
+      </h2>
+
+      <p class="section-description">
+        The value is not only in capturing the appointment. The
+        system also keeps the patient journey moving after the
+        booking is submitted.
+      </p>
 
       <div class="results-grid fade-in">
-        <div class="result"><span>01</span><strong>Easier appointment booking</strong></div>
-        <div class="result"><span>02</span><strong>Better patient communication</strong></div>
-        <div class="result"><span>03</span><strong>Fewer missed follow-ups</strong></div>
-        <div class="result"><span>04</span><strong>Faster rescheduling</strong></div>
-        <div class="result"><span>05</span><strong>More organized clinic workflow</strong></div>
+
+        <div class="result-card">
+          <span>01</span>
+          <strong>
+            Easier appointment booking
+          </strong>
+        </div>
+
+        <div class="result-card">
+          <span>02</span>
+          <strong>
+            More consistent patient communication
+          </strong>
+        </div>
+
+        <div class="result-card">
+          <span>03</span>
+          <strong>
+            Fewer missed follow-up tasks
+          </strong>
+        </div>
+
+        <div class="result-card">
+          <span>04</span>
+          <strong>
+            Faster rescheduling and recovery
+          </strong>
+        </div>
+
+        <div class="result-card">
+          <span>05</span>
+          <strong>
+            More organized clinic operations
+          </strong>
+        </div>
+
       </div>
 
       <div class="lesson-grid fade-in">
+
         <div class="lesson-card">
-          <div class="lesson-num">01</div>
-          <div class="lesson-title">Front-end funnel</div>
-          <div class="lesson-desc">Captures patient interest and guides them toward booking.</div>
+
+          <div class="lesson-number">
+            01
+          </div>
+
+          <div class="lesson-title">
+            Front-End Funnel
+          </div>
+
+          <div class="lesson-description">
+            Captures patient interest and guides visitors toward
+            scheduling an appointment.
+          </div>
+
         </div>
+
         <div class="lesson-card">
-          <div class="lesson-num">02</div>
-          <div class="lesson-title">Backend automation</div>
-          <div class="lesson-desc">Handles reminders, status checks, and patient routing.</div>
+
+          <div class="lesson-number">
+            02
+          </div>
+
+          <div class="lesson-title">
+            Backend Automation
+          </div>
+
+          <div class="lesson-description">
+            Handles confirmations, reminders, status checks,
+            CRM movement, and patient routing.
+          </div>
+
         </div>
+
         <div class="lesson-card">
-          <div class="lesson-num">03</div>
-          <div class="lesson-title">Clear clinic process</div>
-          <div class="lesson-desc">Makes every appointment outcome easier to manage.</div>
+
+          <div class="lesson-number">
+            03
+          </div>
+
+          <div class="lesson-title">
+            Clear Clinic Process
+          </div>
+
+          <div class="lesson-description">
+            Gives the team a structured process for every
+            appointment outcome and follow-up path.
+          </div>
+
         </div>
+
       </div>
 
-      <div class="abox fade-in">
-        <strong>Key takeaway:</strong> The funnel captures the booking. The CRM automation keeps the patient journey moving.
+      <div class="highlight-box fade-in">
+        <strong>Key takeaway:</strong>
+
+        The funnel captures the booking. The CRM automation keeps
+        the patient journey moving.
       </div>
+
+      <div class="highlight-box fade-in">
+        <strong>Portfolio disclosure:</strong>
+
+        SmileCraft Dental Clinic is a practice portfolio project
+        created to demonstrate GoHighLevel funnel, CRM, email,
+        SMS, and workflow automation skills. It is not presented
+        as a live client implementation.
+      </div>
+
     </section>
+
   </main>
 
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+
   <footer class="footer">
-    SmileCraft Dental Clinic - Funnel and CRM Automation Case Study
+    SmileCraft Dental Clinic · Funnel and CRM Automation Case Study
+    <br>
+    <span>Built With Emerlyn</span>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+  <!-- ======================================================
+       INTERSECTION OBSERVER
+       ====================================================== -->
 
-    document.querySelectorAll(".fade-in").forEach((item) => observer.observe(item));
+  <script>
+    const animatedItems = document.querySelectorAll(".fade-in");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+      animatedItems.forEach((item) => {
+        observer.observe(item);
+      });
+    } else {
+      animatedItems.forEach((item) => {
+        item.classList.add("visible");
+      });
+    }
   </script>
+
 </body>
 </html>
